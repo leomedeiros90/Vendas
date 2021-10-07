@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Vendas.Models.TbProduto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Novo Produto</a>
+</p>
+<table id="TableProdutos" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecoCompraProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecoVendaProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstoqueProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagemProduto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescricaoProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnidadeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecoCompraProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecoVendaProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstoqueProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagemProduto)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning m-1" asp-route-id="@item.IdProduto">Alterar</a>
+                    <a asp-action="Details" class="btn btn-info m-1" asp-route-id="@item.IdProduto">Detalhes</a>
+                    <a asp-action="Delete" class="btn btn-danger m-1" asp-route-id="@item.IdProduto">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            $('#TableProdutos').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+
+    </script>>
+
+}
